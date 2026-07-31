@@ -1,5 +1,6 @@
 ---
 interface Props { variant?: "colour" | "white" | "black"; decorative?: boolean; }
 const { variant = "colour", decorative = false } = Astro.props;
+const fileVariant = variant === "colour" ? "color" : variant;
 ---
-<img src={`/assets/logo-${variant}.png`} width="390" height="140" alt={decorative ? "" : "TitleIQ & Consultancy"} />
+<img src={`/assets/logo-${fileVariant}.png`} width="390" height="140" alt={decorative ? "" : "TitleIQ & Consultancy"} />
