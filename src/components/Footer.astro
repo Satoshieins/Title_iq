@@ -1,0 +1,21 @@
+---
+import Logo from "./Logo.astro";
+import { site } from "../data/site";
+import { services } from "../data/services";
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-g">
+      <div>
+        <Logo variant="white" />
+        <p style="font-size:13.5px;line-height:1.8;max-width:300px;color:rgba(255,255,255,.72)">Tailored property conveyancing and bespoke legal support for clients and property professionals across New Zealand.</p>
+        <div class="ftr-note">{site.nestNotice}</div>
+      </div>
+      <div><div class="ft-h">Contact</div><a href={site.phoneHref}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a><a href="https://www.titleiq.nz">{site.web}</a><address>{site.address.map(line => <div>{line}</div>)}</address></div>
+      <div><div class="ft-h">Services</div>{services.map(service => <a href={service.slug}>{service.title}</a>)}</div>
+      <div><div class="ft-h">Company</div><a href="/about/">About</a><a href="/fees/">Fees</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-engagement/">Terms of Engagement</a></div>
+    </div>
+    <div class="ftr-b"><div>© {year} {site.name}. All rights reserved.</div><div>Hastings, Hawke's Bay · Assisting clients throughout New Zealand</div></div>
+  </div>
+</footer>

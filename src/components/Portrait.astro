@@ -1,0 +1,4 @@
+---
+const { badge = true, loading = "lazy", fetchpriority = "auto" } = Astro.props;
+---
+<div class="portrait"><img src="/assets/amy.png" alt="Amy, Conveyancing Practitioner at TitleIQ & Consultancy" width="720" height="900" loading={loading} fetchpriority={fetchpriority} />{badge && <div class="badge"><b>20+</b><span>Years' experience</span></div>}</div>

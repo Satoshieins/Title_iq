@@ -1,0 +1,6 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+const { title, description, intro } = Astro.props;
+---
+<BaseLayout {title} {description}><PageHero eyebrow="Legal" title={title.replace(" | TitleIQ & Consultancy","")} {intro} trail={[{label:title.split(" | ")[0]}]} /><section class="sec bg-cream"><div class="wrap narrow"><slot /></div></section></BaseLayout>

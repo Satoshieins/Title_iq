@@ -1,0 +1,4 @@
+---
+const { eyebrow, title, copy, primary = {href:"/contact/", label:"Make an Enquiry"}, secondary } = Astro.props;
+---
+<section class="sec bg-creamd"><div class="wrap narrow">{eyebrow && <span class="eyebrow">{eyebrow}</span>}<h2 class="h2">{title}</h2><div class="rule" style="margin-bottom:22px"></div><p class="lead" style="margin-bottom:30px">{copy}</p><div class="btns"><a class="btn btn-copper" href={primary.href}>{primary.label}</a>{secondary && <a class="btn btn-ghost" href={secondary.href}>{secondary.label}</a>}</div></div></section>

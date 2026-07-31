@@ -1,0 +1,5 @@
+---
+import type { FeeGroup } from "../data/fees";
+const { group } = Astro.props as { group: FeeGroup };
+---
+<div class="card rise" style="padding:26px 22px"><table class="ftable"><caption>{group.title}</caption><thead><tr><th scope="col">Service</th><th scope="col">Fee</th></tr></thead><tbody>{group.rows.map(([label,value]) => <tr><td>{label}</td><td>{value}</td></tr>)}{group.extra && <><tr><td class="sub-h" colspan="2">{group.extraLabel}</td></tr>{group.extra.map(([label,value]) => <tr><td>{label}</td><td>{value}</td></tr>)}</>}</tbody></table></div>

@@ -1,0 +1,24 @@
+{
+  "name": "titleiq-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "cf:dev": "wrangler pages dev dist",
+    "typecheck:functions": "tsc -p functions/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@cloudflare/workers-types": "^5.20260731.1",
+    "@types/node": "^26.1.2",
+    "typescript": "^6.0.0",
+    "wrangler": "^4.116.0"
+  }
+}

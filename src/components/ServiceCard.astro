@@ -1,0 +1,11 @@
+---
+import type { Service } from "../data/services";
+const { service, index } = Astro.props as { service: Service; index?: number };
+---
+<a href={service.slug} class="card card-top card-link svc rise">
+  {index !== undefined && <span class="svc-n">{String(index + 1).padStart(2, "0")}</span>}
+  <h3 class="h3" style="margin-bottom:12px">{service.title}</h3><p style="font-size:14.5px">{service.blurb}</p>
+  <ul class="ticks">{service.items.map(item => <li>{item}</li>)}</ul>
+  {service.note && <p style="font-size:12.5px;font-style:italic;margin-bottom:18px;opacity:.75">{service.note}</p>}
+  <span class="tlink" style="margin-top:auto;align-self:flex-start">{service.cta} →</span>
+</a>

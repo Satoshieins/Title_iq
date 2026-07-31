@@ -1,0 +1,36 @@
+---
+import Logo from "./Logo.astro";
+import { services } from "../data/services";
+const current = Astro.url.pathname;
+const active = (path: string) => current === path || (path !== "/" && current.startsWith(path));
+---
+<header class="hdr" data-header>
+  <div class="wrap hdr-in">
+    <a href="/" class="hdr-logo" aria-label="TitleIQ & Consultancy — home"><Logo /></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="navlink" href="/" aria-current={active("/") ? "page" : undefined}>Home</a>
+      <div class="dd-wrap">
+        <button type="button" class="navlink" data-services-trigger aria-expanded="false" aria-haspopup="true" aria-current={active("/services/") ? "page" : undefined}>Services <i class="caret"></i></button>
+        <div class="dd" data-services-menu hidden>
+          <a href="/services/">All Services<span>Overview of how we can help</span></a>
+          {services.map(service => <a href={service.slug}>{service.title}<span>{service.nav}</span></a>)}
+        </div>
+      </div>
+      <a class="navlink" href="/about/" aria-current={active("/about/") ? "page" : undefined}>About</a>
+      <a class="navlink" href="/fees/" aria-current={active("/fees/") ? "page" : undefined}>Fees</a>
+      <a class="navlink" href="/contact/" aria-current={active("/contact/") ? "page" : undefined}>Contact</a>
+      <a class="btn btn-copper" href="/contact/">Make an Enquiry</a>
+    </nav>
+    <button type="button" class="burger" aria-label="Open menu" aria-expanded="false" data-menu-open><i></i><i></i><i></i></button>
+  </div>
+</header>
+<div class="msheet" role="dialog" aria-modal="true" aria-label="Menu" data-mobile-menu hidden>
+  <div class="msheet-bg" data-menu-close></div>
+  <div class="msheet-p">
+    <div class="msheet-top"><Logo variant="white" decorative /><button type="button" class="mclose" aria-label="Close menu" data-menu-close>×</button></div>
+    <a href="/">Home</a><a href="/services/">Services</a>
+    {services.map(service => <a class="sub" href={service.slug}>{service.title}</a>)}
+    <a href="/about/">About</a><a href="/fees/">Fees</a><a href="/contact/">Contact</a>
+    <a class="btn btn-copper" style="margin-top:20px" href="/contact/">Make an Enquiry</a>
+  </div>
+</div>

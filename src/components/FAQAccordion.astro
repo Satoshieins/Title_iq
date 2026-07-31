@@ -1,0 +1,5 @@
+---
+import type { FAQ } from "../data/faqs";
+const { items } = Astro.props as { items: FAQ[] };
+---
+<div class="faq" data-faq>{items.map((item,index) => <div class="faq-i"><h3><button type="button" class="faq-q" aria-expanded="false" aria-controls={`faq-panel-${index}`} id={`faq-button-${index}`}>{item.question}</button></h3><div class="faq-a" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-button-${index}`} hidden>{item.answer}</div></div>)}</div>

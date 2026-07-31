@@ -1,0 +1,10 @@
+---
+import Breadcrumbs from "./Breadcrumbs.astro";
+interface Props { eyebrow: string; title: string; intro?: string; trail?: {label:string;href?:string}[]; note?: string; }
+const { eyebrow, title, intro, trail, note } = Astro.props;
+---
+<section class="sec-tight bg-creamd" style="padding-top:44px"><div class="wrap">
+  {trail && <div style="margin-bottom:26px"><Breadcrumbs trail={trail} /></div>}
+  <div class="narrow"><span class="eyebrow">{eyebrow}</span><h1 class="h1">{title}</h1><div class="rule" style="margin-bottom:24px"></div>
+  {intro && <p class="lead">{intro}</p>}{note && <div class="note" style="margin-top:24px">{note}</div>}<slot /></div>
+</div></section>

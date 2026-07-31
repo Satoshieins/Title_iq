@@ -1,0 +1,44 @@
+---
+import { serviceOptions } from "../data/forms";
+---
+<form class="card" data-enquiry-form novalidate>
+  <div class="grid g2" style="gap:18px">
+    <div class="field"><label for="name">Full name <span class="req">*</span></label><input id="name" name="name" autocomplete="name" /><div class="err" id="name-error"></div></div>
+    <div class="field"><label for="email">Email address <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" /><div class="err" id="email-error"></div></div>
+    <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+    <div class="field"><label for="organisation">Organisation</label><input id="organisation" name="organisation" autocomplete="organization" /></div>
+  </div>
+  <div class="grid g2" style="gap:18px;margin-top:18px">
+    <div class="field"><label for="service">Service required</label><select id="service" name="service"><option value="">Please select…</option>{serviceOptions.map(option => <option>{option}</option>)}</select></div>
+    <div class="field"><label for="location">Property or project location</label><input id="location" name="location" /></div>
+  </div>
+  <div class="field" style="margin-top:18px"><label for="message">How can we help?</label><textarea id="message" name="message" rows="5" placeholder="A short outline of your matter — please do not include confidential documents."></textarea></div>
+  <div class="field" style="margin-top:18px"><label for="contactBy">Preferred contact method</label><select id="contactBy" name="contactBy"><option>Email</option><option>Phone</option><option>Either</option></select></div>
+  <div class="hp" aria-hidden="true"><label for="company">Company website</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
+  <label class="check" style="margin-top:20px"><input type="checkbox" name="consent" id="consent" /><span>I agree that the information submitted may be used to respond to this enquiry, as described in the <a href="/privacy-policy/">Privacy Policy</a>.</span></label>
+  <div class="err" id="consent-error"></div>
+  <button class="btn btn-copper" type="submit" style="margin-top:24px">Send Enquiry</button>
+  <div class="form-status" role="status" aria-live="polite"></div>
+  <p style="font-size:12.5px;color:var(--text-muted);margin-top:18px;line-height:1.7">Information submitted through this form will be used to respond to your enquiry. Sending an enquiry does not create a client relationship or confirm that TitleIQ can act in the matter.</p>
+</form>
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-enquiry-form]");
+  form?.addEventListener("submit", async event => {
+    event.preventDefault();
+    const data = new FormData(form); const errors: Record<string,string> = {};
+    const name=String(data.get("name")||"").trim(), email=String(data.get("email")||"").trim();
+    if(!name) errors.name="Please enter your full name.";
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errors.email="Please enter a valid email address.";
+    if(!data.get("consent")) errors.consent="Please confirm you agree to the privacy note.";
+    ["name","email","consent"].forEach(id=>{const input=form.querySelector<HTMLElement>(`#${id}`);const error=form.querySelector<HTMLElement>(`#${id}-error`);const message=errors[id]||"";input?.setAttribute("aria-invalid",message?"true":"false");if(message)input?.setAttribute("aria-describedby",`${id}-error`);else input?.removeAttribute("aria-describedby");if(error)error.textContent=message;});
+    if(Object.keys(errors).length){form.querySelector<HTMLElement>(`#${Object.keys(errors)[0]}`)?.focus();return;}
+    const button=form.querySelector<HTMLButtonElement>('button[type="submit"]')!; const status=form.querySelector<HTMLElement>(".form-status")!;
+    button.disabled=true; button.textContent="Sending…"; status.textContent="";
+    try {
+      const response=await fetch("/api/enquiry",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(Object.fromEntries(data))});
+      if(!response.ok) throw new Error("Request failed");
+      form.reset(); status.textContent="Thank you. Your enquiry has been received and we will be in touch as soon as practicable.";
+    } catch { status.textContent="We could not send your enquiry. Please try again or email amy@titleiq.co.nz directly."; }
+    finally { button.disabled=false; button.textContent="Send Enquiry"; }
+  });
+</script>
