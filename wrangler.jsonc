@@ -3,6 +3,17 @@
   "name": "title-iq",
   "main": "worker/index.ts",
   "compatibility_date": "2026-07-31",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "titleiq.co.nz",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.titleiq.co.nz",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist",
