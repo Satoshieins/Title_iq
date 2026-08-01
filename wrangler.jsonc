@@ -6,12 +6,12 @@
   "workers_dev": true,
   "routes": [
     {
-      "pattern": "titleiq.co.nz",
-      "custom_domain": true
+      "pattern": "titleiq.co.nz/*",
+      "zone_name": "titleiq.co.nz"
     },
     {
-      "pattern": "www.titleiq.co.nz",
-      "custom_domain": true
+      "pattern": "www.titleiq.co.nz/*",
+      "zone_name": "titleiq.co.nz"
     }
   ],
   "assets": {
