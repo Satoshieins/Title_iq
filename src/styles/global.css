@@ -121,6 +121,7 @@ table{width:100%;border-collapse:collapse}
 .msheet-bg{position:absolute;inset:0;background:rgba(6,12,26,.7)}
 .msheet-p{position:absolute;top:0;right:0;bottom:0;width:min(360px,88%);background:var(--navy-deep);padding:20px 22px 36px;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
 .msheet-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.msheet-top img{display:block;width:158px;max-width:calc(100% - 56px);height:auto;object-fit:contain}
 .msheet-p a{padding:15px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:#fff}
 .msheet-p a.sub{padding-left:16px;font-size:12.5px;letter-spacing:.05em;text-transform:none;font-weight:600;color:var(--text-muted)}
 .mclose{background:none;border:1px solid var(--line);border-radius:50%;width:40px;height:40px;font-size:20px;line-height:1;color:#fff;cursor:pointer}
@@ -129,7 +130,7 @@ table{width:100%;border-collapse:collapse}
 .ftr h2,.ftr .ft-h{font-family:Lato;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);margin-bottom:16px}
 .ftr a{color:rgba(255,255,255,.7);display:block;padding:5px 0;font-size:13.5px}
 .ftr a:hover{color:var(--copper-light)}
-.ftr img{height:46px;margin-bottom:16px}
+.ftr img{display:block;width:165px;max-width:100%;height:auto;object-fit:contain;margin-bottom:16px}
 .ftr-b{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.45)}
 .ftr-note{margin-top:18px;font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.6);border-left:2px solid var(--copper);padding-left:14px}
 .portrait{position:relative;z-index:0}
