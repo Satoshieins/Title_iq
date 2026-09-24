@@ -38,7 +38,7 @@ import { serviceOptions } from "../data/forms";
       const response=await fetch("/api/enquiry",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(Object.fromEntries(data))});
       if(!response.ok) throw new Error("Request failed");
       form.reset(); status.textContent="Thank you. Your enquiry has been received and we will be in touch as soon as practicable.";
-    } catch { status.textContent="We could not send your enquiry. Please try again or email amy@titleiq.co.nz directly."; }
+    } catch { status.textContent="We could not send your enquiry. Please try again or email amy@titleiq.nz directly."; }
     finally { button.disabled=false; button.textContent="Send Enquiry"; }
   });
 </script>

@@ -15,7 +15,7 @@ export const site: SiteDetails = {
   short: "TitleIQ",
   phone: "06 870 3299",
   phoneHref: "tel:+6468703299",
-  email: "amy@titleiq.co.nz",
+  email: "amy@titleiq.nz",
   web: "www.titleiq.nz",
   address: ["211 Market Street South", "Hastings", "New Zealand"],
   nestNotice: "Conveyancing services are provided through Nest Legal and Conveyancing Limited.",

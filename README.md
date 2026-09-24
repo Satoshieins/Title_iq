@@ -27,7 +27,7 @@ Connect this GitHub repository in **Workers & Pages → Create application → P
 Under **Settings → Variables and Secrets**, add these to Production and Preview:
 
 - `SITE_URL`: `https://titleiq.nz`
-- `ENQUIRY_TO_EMAIL`: `amy@titleiq.co.nz`
+- `ENQUIRY_TO_EMAIL`: `amy@titleiq.nz`
 - `ENQUIRY_FROM_EMAIL`: a sender verified with Resend
 - `EMAIL_API_KEY`: the Resend API key, encrypted as a secret
 - `EMAIL_API_URL`: optional; defaults to `https://api.resend.com/emails`
